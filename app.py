@@ -288,7 +288,7 @@ def save_data():
     try:
         # sync TEAM into DB (upsert)
         for name, p in TEAM.items():
-            pm = PlayerModel.query.get(name)
+            pm = db.session.get(PlayerModel, name)
             if not pm:
                 pm = PlayerModel(name=name)
             pm.shots = {k: v for k, v in p.shots.items()}
@@ -318,7 +318,8 @@ def load_data():
 
 
 # load existing data at startup (if any)
-load_data()
+with app.app_context():
+    load_data()
 
 
 
@@ -341,6 +342,31 @@ def add_player():
     save_data()
     flash(f'Player {name} added', 'success')
     return redirect(url_for('player_page', name=name))
+
+
+@app.route('/remove_player/<name>', methods=['POST'])
+def remove_player(name):
+    if name not in TEAM:
+        flash('Player not found', 'danger')
+        return redirect(url_for('index'))
+    
+    # Remove from TEAM dictionary
+    del TEAM[name]
+    
+    # Remove from database
+    try:
+        pm = db.session.get(PlayerModel, name)
+        if pm:
+            db.session.delete(pm)
+            db.session.commit()
+    except Exception as e:
+        db.session.rollback()
+        app.logger.error('Failed to remove player from DB: %s', e)
+        flash(f'Error removing player: {e}', 'danger')
+        return redirect(url_for('index'))
+    
+    flash(f'Player {name} removed', 'success')
+    return redirect(url_for('index'))
 
 
 @app.route('/player/<name>')
