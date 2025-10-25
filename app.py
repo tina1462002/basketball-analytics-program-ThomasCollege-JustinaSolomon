@@ -318,7 +318,8 @@ def load_data():
 
 
 # load existing data at startup (if any)
-load_data()
+with app.app_context():
+    load_data()
 
 
 
