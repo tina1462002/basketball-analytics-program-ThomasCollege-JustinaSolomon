@@ -1,0 +1,58 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+  <h2>Team Report</h2>
+  <div class="mb-3">
+    <a class="btn btn-outline-success" href="{{ url_for('export_csv') }}">Export CSV</a>
+  </div>
+
+  <div class="d-flex justify-content-between align-items-center mb-2">
+    <h5 class="m-0">Team Totals</h5>
+    <div class="badge bg-primary fs-5">Team Progress: {{ team_pct }}%</div>
+  </div>
+  <ul class="list-group mb-3">
+    <li class="list-group-item">Players: {{ team.players }}</li>
+    <li class="list-group-item">Points: {{ team.points }}</li>
+    <li class="list-group-item">Shots made: {{ team.shots_made }}</li>
+    <li class="list-group-item">Shots missed: {{ team.shots_missed }}</li>
+    <li class="list-group-item">Assists: {{ team.assists }}</li>
+    <li class="list-group-item">Turnovers: {{ team.turnovers }}</li>
+  </ul>
+
+  <h5>Players</h5>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>PTS</th>
+        <th>FGM</th>
+        <th>FGA</th>
+        <th>AST</th>
+        <th>TOV</th>
+        <th>PER</th>
+        <th>TS%</th>
+        <th>A/T</th>
+        <th>Usage%</th>
+        <th>BPM</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for p in players %}
+        <tr>
+          <td>{{ p.name }}</td>
+          <td>{{ p.points }}</td>
+          <td>{{ p.shots_made }}</td>
+          <td>{{ p.shots_made + p.shots_missed }}</td>
+          <td>{{ p.assists }}</td>
+          <td>{{ p.turnovers }}</td>
+          <td>{{ p['PER'] }}</td>
+          <td>{{ p['TS%'] }}</td>
+          <td>{{ p['A/T'] }}</td>
+          <td>{{ p['Usage%'] }}</td>
+          <td>{{ p['BPM'] }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+{% endblock %}

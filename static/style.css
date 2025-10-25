@@ -1,0 +1,4 @@
+body{ background:#f7f9fb }
+.container{ max-width:980px }
+.navbar-brand{ font-weight:600 }
+.list-group-item strong{ display:inline-block; min-width:120px }

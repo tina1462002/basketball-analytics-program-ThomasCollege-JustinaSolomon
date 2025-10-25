@@ -1,0 +1,35 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-md-6">
+      <h3>Add Player</h3>
+      <form method="post" action="{{ url_for('add_player') }}">
+        <div class="mb-3">
+          <label class="form-label">Player name</label>
+          <input class="form-control" name="name" placeholder="First Last">
+        </div>
+        <button class="btn btn-primary">Add</button>
+      </form>
+    </div>
+
+    <div class="col-md-6">
+      <div class="d-flex justify-content-between align-items-center">
+        <h3 class="mb-0">Players</h3>
+        <div class="badge bg-primary">Team Progress: {{ team_pct }}%</div>
+      </div>
+      {% if players %}
+        <ul class="list-group">
+          {% for p in players %}
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              {{ p }}
+              <a class="btn btn-sm btn-outline-secondary" href="{{ url_for('player_page', name=p) }}">Open</a>
+            </li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        <p class="text-muted">No players yet — add one to begin tallying events.</p>
+      {% endif %}
+    </div>
+  </div>
+{% endblock %}

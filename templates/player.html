@@ -1,0 +1,140 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+  <div class="d-flex justify-content-between align-items-center">
+    <h2>{{ player.name }}</h2>
+    <div>
+      <a class="btn btn-secondary" href="{{ url_for('index') }}">Back</a>
+      <a class="btn btn-outline-primary" href="{{ url_for('report') }}">Team Report</a>
+    </div>
+  </div>
+
+  <div class="row mt-3">
+    <div class="col-md-6">
+      <h5>Metrics</h5>
+      <ul class="list-group">
+        {% for k,v in metrics.items() %}
+          <li class="list-group-item d-flex justify-content-between"><strong>{{ k }}</strong><span>{{ v }}</span></li>
+        {% endfor %}
+      </ul>
+
+      <h5 class="mt-3">Tally Summary</h5>
+      <ul class="list-group">
+        <li class="list-group-item">Points: {{ player.points }}</li>
+        <li class="list-group-item">Shots made: {{ player.shots_made() }}</li>
+        <li class="list-group-item">Shots missed: {{ player.shots_missed() }}</li>
+        <li class="list-group-item">Assists: {{ player.assists }}</li>
+        <li class="list-group-item">Turnovers: {{ player.turnovers }}</li>
+      </ul>
+    </div>
+
+    <div class="col-md-6">
+      <h5>Record Event</h5>
+      <form method="post" action="{{ url_for('player_event', name=player.name) }}">
+        <div class="mb-3">
+          <label class="form-label">Event</label>
+          <select class="form-select" name="event" id="event-select" onchange="showFields()">
+            <option value="shot">Shot</option>
+            <option value="assist">Assist</option>
+            <option value="turnover">Turnover</option>
+            <option value="rebound">Rebound</option>
+            <option value="strike">Strike Zone Pass</option>
+            <option value="cut">Cut</option>
+            <option value="paint">Paint Touch</option>
+            <option value="defense">Defense</option>
+          </select>
+        </div>
+
+        <div id="shot-fields">
+          <div class="mb-2">
+            <label class="form-label">Shot Type</label>
+            <select class="form-select" name="shot_type">
+              <option value="layup">Layup</option>
+              <option value="midrange">Midrange</option>
+              <option value="3pt">3pt</option>
+            </select>
+          </div>
+          <div class="mb-2">
+            <label class="form-label">Made?</label>
+            <select class="form-select" name="made">
+              <option value="yes">Yes</option>
+              <option value="no">No</option>
+            </select>
+          </div>
+          <div class="mb-2">
+            <label class="form-label">Contested?</label>
+            <select class="form-select" name="contested">
+              <option value="no">No</option>
+              <option value="yes">Yes</option>
+            </select>
+          </div>
+        </div>
+
+        <div id="strike-fields" style="display:none">
+          <div class="mb-2">
+            <label class="form-label">Kind</label>
+            <select class="form-select" name="kind">
+              <option value="balls">Balls</option>
+              <option value="strikes">Strikes</option>
+            </select>
+          </div>
+        </div>
+
+        <div id="cut-fields" style="display:none">
+          <div class="mb-2">
+            <label class="form-label">Result</label>
+            <select class="form-select" name="result">
+              <option value="pass">Pass to cutter</option>
+              <option value="made">Made shot</option>
+              <option value="missed">Missed shot</option>
+            </select>
+          </div>
+        </div>
+
+        <div id="paint-fields" style="display:none">
+          <div class="mb-2">
+            <label class="form-label">Result</label>
+            <select class="form-select" name="result">
+              <option value="made">Made</option>
+              <option value="missed">Missed</option>
+              <option value="kick">Kick out (pass)</option>
+            </select>
+          </div>
+        </div>
+
+        <div id="defense-fields" style="display:none">
+          <div class="mb-2">
+            <label class="form-label">Contested?</label>
+            <select class="form-select" name="contested">
+              <option value="yes">Yes</option>
+              <option value="no">No</option>
+            </select>
+          </div>
+          <div class="mb-2">
+            <label class="form-label">Made?</label>
+            <select class="form-select" name="made">
+              <option value="no">No</option>
+              <option value="yes">Yes</option>
+            </select>
+          </div>
+        </div>
+
+        <button class="btn btn-success mt-2">Record</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    function showFields(){
+      const ev = document.getElementById('event-select').value;
+      document.getElementById('shot-fields').style.display = (ev==='shot') ? '' : 'none';
+      document.getElementById('strike-fields').style.display = (ev==='strike') ? '' : 'none';
+      document.getElementById('cut-fields').style.display = (ev==='cut') ? '' : 'none';
+      document.getElementById('paint-fields').style.display = (ev==='paint') ? '' : 'none';
+      document.getElementById('defense-fields').style.display = (ev==='defense') ? '' : 'none';
+    }
+    // Initialize
+    showFields();
+  </script>
+
+{% endblock %}
