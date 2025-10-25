@@ -359,7 +359,6 @@ def remove_player(name):
     except Exception as e:
         db.session.rollback()
         app.logger.error('Failed to delete player from DB: %s', e)
-    save_data()
     flash(f'Player {name} removed', 'success')
     return redirect(url_for('index'))
 
