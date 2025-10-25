@@ -344,6 +344,26 @@ def add_player():
     return redirect(url_for('player_page', name=name))
 
 
+@app.route('/remove_player/<name>', methods=['POST'])
+def remove_player(name):
+    if name not in TEAM:
+        flash('Player not found', 'danger')
+        return redirect(url_for('index'))
+    del TEAM[name]
+    # Also remove from database
+    try:
+        pm = PlayerModel.query.get(name)
+        if pm:
+            db.session.delete(pm)
+            db.session.commit()
+    except Exception as e:
+        db.session.rollback()
+        app.logger.error('Failed to delete player from DB: %s', e)
+    save_data()
+    flash(f'Player {name} removed', 'success')
+    return redirect(url_for('index'))
+
+
 @app.route('/player/<name>')
 def player_page(name):
     player = TEAM.get(name)
