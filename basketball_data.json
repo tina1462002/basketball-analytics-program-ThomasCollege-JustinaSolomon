@@ -1,0 +1,114 @@
+{
+  "Hermione Madsen": {
+    "name": "Hermione Madsen",
+    "shots": {
+      "2pt": {
+        "made": 1,
+        "missed": 0,
+        "contested_made": 1,
+        "contested_missed": 0
+      },
+      "3pt": {
+        "made": 0,
+        "missed": 0,
+        "contested_made": 0,
+        "contested_missed": 0
+      },
+      "layup": {
+        "made": 1,
+        "missed": 0,
+        "contested_made": 1,
+        "contested_missed": 0
+      },
+      "midrange": {
+        "made": 0,
+        "missed": 1,
+        "contested_made": 0,
+        "contested_missed": 1
+      }
+    },
+    "assists": 29,
+    "turnovers": 6,
+    "rebounds": 10,
+    "points": 4,
+    "strike_zone": {
+      "balls": 1,
+      "strikes": 2,
+      "ball_made": 1,
+      "ball_missed": 0,
+      "strike_made": 0,
+      "strike_missed": 2
+    },
+    "cuts": {
+      "total": 1,
+      "pass_to_cutter": 1,
+      "made_shot": 0,
+      "missed_shot": 0
+    },
+    "paint_touches": {
+      "total": 2,
+      "made_shot": 0,
+      "missed_shot": 1,
+      "kick_out": 1
+    },
+    "defense": {
+      "contested_made": 1,
+      "contested_missed": 0,
+      "uncontested_made": 0,
+      "uncontested_missed": 0
+    }
+  },
+  "Vel Solomon": {
+    "name": "Vel Solomon",
+    "shots": {
+      "layup": {
+        "made": 0,
+        "missed": 0,
+        "contested_made": 0,
+        "contested_missed": 0
+      },
+      "midrange": {
+        "made": 0,
+        "missed": 0,
+        "contested_made": 0,
+        "contested_missed": 0
+      },
+      "3pt": {
+        "made": 0,
+        "missed": 0,
+        "contested_made": 0,
+        "contested_missed": 0
+      }
+    },
+    "assists": 0,
+    "turnovers": 0,
+    "rebounds": 0,
+    "points": 0,
+    "strike_zone": {
+      "balls": 0,
+      "strikes": 0,
+      "ball_made": 0,
+      "ball_missed": 0,
+      "strike_made": 0,
+      "strike_missed": 0
+    },
+    "cuts": {
+      "total": 0,
+      "pass_to_cutter": 0,
+      "made_shot": 0,
+      "missed_shot": 0
+    },
+    "paint_touches": {
+      "total": 0,
+      "made_shot": 0,
+      "missed_shot": 0,
+      "kick_out": 0
+    },
+    "defense": {
+      "contested_made": 0,
+      "contested_missed": 0,
+      "uncontested_made": 0,
+      "uncontested_missed": 0
+    }
+  }
+}

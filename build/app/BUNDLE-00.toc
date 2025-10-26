@@ -1,0 +1,4 @@
+([('app',
+   '/Users/justinafouad/Library/CloudStorage/OneDrive-ThomasCollege/Former '
+   'courses/python/Basketball_Analytics_ProgramJS/dist/app',
+   'EXECUTABLE')],)

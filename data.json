@@ -1,0 +1,148 @@
+{
+  "Ian Hettinger": {
+    "name": "Ian Hettinger",
+    "shots": {
+      "layup": {
+        "made": 1,
+        "missed": 0,
+        "contested_made": 1,
+        "contested_missed": 0
+      }
+    },
+    "assists": 6,
+    "turnovers": 1,
+    "rebounds": 0,
+    "points": 2,
+    "strike_zone": {
+      "balls": 1,
+      "strikes": 0
+    },
+    "cuts": {
+      "total": 0,
+      "pass_to_cutter": 0,
+      "made_shot": 0,
+      "missed_shot": 0
+    },
+    "paint_touches": {
+      "total": 0,
+      "made_shot": 0,
+      "missed_shot": 0,
+      "kick_out": 0
+    },
+    "defense": {
+      "contested_made": 0,
+      "contested_missed": 0,
+      "uncontested_made": 0,
+      "uncontested_missed": 0
+    },
+    "event_history": [
+      {
+        "event": "shot",
+        "data": {
+          "shot_type": "layup",
+          "made": true,
+          "contested": true
+        }
+      },
+      {
+        "event": "assist",
+        "data": {}
+      },
+      {
+        "event": "assist",
+        "data": {}
+      },
+      {
+        "event": "assist",
+        "data": {}
+      },
+      {
+        "event": "assist",
+        "data": {}
+      },
+      {
+        "event": "assist",
+        "data": {}
+      },
+      {
+        "event": "assist",
+        "data": {}
+      },
+      {
+        "event": "turnover",
+        "data": {}
+      },
+      {
+        "event": "strike",
+        "data": {
+          "kind": "balls"
+        }
+      }
+    ]
+  },
+  "Hermione": {
+    "name": "Hermione",
+    "shots": {
+      "3pt": {
+        "made": 0,
+        "missed": 1,
+        "contested_made": 0,
+        "contested_missed": 0
+      },
+      "midrange": {
+        "made": 0,
+        "missed": 0,
+        "contested_made": 0,
+        "contested_missed": 0
+      }
+    },
+    "assists": 0,
+    "turnovers": 0,
+    "rebounds": 0,
+    "points": 4,
+    "strike_zone": {
+      "balls": 0,
+      "strikes": 0
+    },
+    "cuts": {
+      "total": 0,
+      "pass_to_cutter": 0,
+      "made_shot": 0,
+      "missed_shot": 0
+    },
+    "paint_touches": {
+      "total": 2,
+      "made_shot": 2,
+      "missed_shot": 0,
+      "kick_out": 0
+    },
+    "defense": {
+      "contested_made": 0,
+      "contested_missed": 0,
+      "uncontested_made": 0,
+      "uncontested_missed": 0
+    },
+    "event_history": [
+      {
+        "event": "shot",
+        "data": {
+          "shot_type": "3pt",
+          "made": false,
+          "contested": false
+        }
+      },
+      {
+        "event": "paint",
+        "data": {
+          "result": "made"
+        }
+      },
+      {
+        "event": "paint",
+        "data": {
+          "result": "made"
+        }
+      }
+    ]
+  }
+}
